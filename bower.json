@@ -1,0 +1,23 @@
+{
+  "name": "egghead-angular",
+  "version": "0.0.0",
+  "homepage": "https://github.com/albertywu/egghead-angular",
+  "authors": [
+    "albertywu <albertywu@gmail.com>"
+  ],
+  "description": "checking out egghead.io videos, and running through the tutorials here!",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.10",
+    "foundation": "~5.0.3",
+    "ionicons": "~1.4.1"
+  }
+}
