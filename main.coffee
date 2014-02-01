@@ -1,2 +1,1 @@
 app = angular.module('myApp', [])
-

@@ -5,7 +5,3 @@
   app = angular.module('myApp', []);
 
 }).call(this);
-
-/*
-//@ sourceMappingURL=main.map
-*/
