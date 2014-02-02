@@ -13,7 +13,7 @@
       },
       template: '<h1 ng-click="toggleShowContent()">{{ title }}</h1><div ng-transclude ng-show="shouldShowContent"></div>',
       link: function(scope, element, attrs) {
-        scope.shouldShowContent = false;
+        scope.shouldShowContent = true;
         return scope.toggleShowContent = function() {
           return scope.shouldShowContent = !scope.shouldShowContent;
         };
