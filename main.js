@@ -4,4 +4,11 @@
 
   app = angular.module('myApp', []);
 
+  app.controller('AppCtrl', function($scope) {
+    this.sayHi = function() {
+      return alert('hi');
+    };
+    return $scope.AppCtrl = this;
+  });
+
 }).call(this);
