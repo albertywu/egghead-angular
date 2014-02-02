@@ -11,14 +11,12 @@
 <body ng-app="myApp">
 
   <div ng-controller="PhoneProviderCtrl">
-
-    <phonecall carrier="carrier"></phonecall>
-    <phonecall carrier="carrier"></phonecall>
-    <phonecall carrier="carrier"></phonecall>
-
+    <phonecall number="650-521-2020" network="network" make-call="leaveMessage(number, message)"></phonecall>
+    <phonecall number="201-768-0138" network="network" make-call="leaveMessage(number, message)"></phonecall>
+    <phonecall number="911" network="network" make-call="leaveMessage(number, message)"></phonecall>
   </div>
   
-  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
   <script src="main.js"></script>
 
 </body>

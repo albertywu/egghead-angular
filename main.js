@@ -4,4 +4,26 @@
 
   app = angular.module('myApp', []);
 
+  app.controller('PhoneProviderCtrl', function($scope) {
+    return $scope.leaveMessage = function(number, message) {
+      return alert("phone number " + number + " left the message: " + message);
+    };
+  });
+
+  app.directive('phonecall', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        number: '@',
+        network: '=',
+        makeCall: '&'
+      },
+      templateUrl: 'templates/phonecall.html',
+      controller: function($scope) {
+        $scope.networks = ['Verizon', 'AT&T', 'TMobile'];
+        return $scope.network = $scope.networks[0];
+      }
+    };
+  });
+
 }).call(this);

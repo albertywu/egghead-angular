@@ -1,0 +1,11 @@
+<div class="panel">
+  Number: {{ number }}
+  Network: {{ network }}
+
+  <select ng-model="network" ng-options="net for net in networks">
+  </select>
+
+  <input type="text" ng-model="message" placeholder="Leave message" />
+
+  <button ng-click="makeCall({ number: number, message: message })">Leave Message!</button>
+</div>
