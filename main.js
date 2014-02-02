@@ -16,10 +16,12 @@
     return {
       restrict: 'A',
       scope: {
-        message: '@'
+        msg: '@alertOnClick'
       },
       link: function(scope, element, attrs) {
-        return alert("message is " + message);
+        return element.bind('click', function() {
+          return alert(element.html());
+        });
       }
     };
   });

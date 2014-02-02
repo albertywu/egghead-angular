@@ -8,6 +8,7 @@ app.directive 'panel', ->
 app.directive 'alertOnClick', ->
   restrict: 'A'
   scope:
-    message: '@'
+    msg: '@alertOnClick'
   link: (scope, element, attrs) ->
-    alert "message is #{ message }"
+    element.bind 'click', ->
+      alert element.html()
