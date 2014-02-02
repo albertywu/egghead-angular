@@ -4,4 +4,24 @@
 
   app = angular.module('myApp', []);
 
+  app.directive('panel', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      template: '<div ng-transclude></div>'
+    };
+  });
+
+  app.directive('alertOnClick', function() {
+    return {
+      restrict: 'A',
+      scope: {
+        message: '@'
+      },
+      link: function(scope, element, attrs) {
+        return alert("message is " + message);
+      }
+    };
+  });
+
 }).call(this);
