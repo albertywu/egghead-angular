@@ -4,4 +4,27 @@
 
   app = angular.module('myApp', []);
 
+  app.directive('dumbPassword', function() {
+    var link, notification;
+    notification = angular.element('<div>{{ password }}</div>');
+    link = function(scope) {
+      return scope.$watch('password', function(value) {
+        if (value === 'password') {
+          return notification.addClass('alert-box alert');
+        } else {
+          return notification.removeClass('alert-box alert');
+        }
+      });
+    };
+    return {
+      restrict: 'E',
+      replace: true,
+      template: '<div><input type="text" ng-model="password" placeholder="Enter a password"></div>',
+      compile: function(tElem) {
+        tElem.append(notification);
+        return link;
+      }
+    };
+  });
+
 }).call(this);
