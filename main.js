@@ -4,4 +4,21 @@
 
   app = angular.module('myApp', []);
 
+  app.directive('zippy', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {
+        title: '@'
+      },
+      template: '<h1 ng-click="toggleShowContent()">{{ title }}</h1><div ng-transclude ng-show="shouldShowContent"></div>',
+      link: function(scope, element, attrs) {
+        scope.shouldShowContent = false;
+        return scope.toggleShowContent = function() {
+          return scope.shouldShowContent = !scope.shouldShowContent;
+        };
+      }
+    };
+  });
+
 }).call(this);
