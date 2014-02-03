@@ -1,9 +1,21 @@
 app = angular.module('myApp', ['ngRoute'])
 
 app.config ($routeProvider) ->
-  $routeProvider.when('/map/:country/:state/:city',
+  $routeProvider.when('/',
+    templateUrl: 'homepage.html'
+  ).when('/map/:country/:state/:city',
+
     templateUrl: 'app.html'
     controller: 'AppCtrl'
+    redirectTo: (routeParams, path, search) ->
+      console.log routeParams
+      console.log path
+      console.log search
+
+      return "/map/USA/#{ routeParams.state }/#{ routeParams.city }" unless routeParams.country is 'USA'
+
+  ).otherwise(
+    redirectTo: '/'
   )
 
 app.controller 'AppCtrl', ($scope, $routeParams) ->

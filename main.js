@@ -5,9 +5,21 @@
   app = angular.module('myApp', ['ngRoute']);
 
   app.config(function($routeProvider) {
-    return $routeProvider.when('/map/:country/:state/:city', {
+    return $routeProvider.when('/', {
+      templateUrl: 'homepage.html'
+    }).when('/map/:country/:state/:city', {
       templateUrl: 'app.html',
-      controller: 'AppCtrl'
+      controller: 'AppCtrl',
+      redirectTo: function(routeParams, path, search) {
+        console.log(routeParams);
+        console.log(path);
+        console.log(search);
+        if (routeParams.country !== 'USA') {
+          return "/map/USA/" + routeParams.state + "/" + routeParams.city;
+        }
+      }
+    }).otherwise({
+      redirectTo: '/'
     });
   });
 
