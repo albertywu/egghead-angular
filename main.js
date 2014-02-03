@@ -2,6 +2,6 @@
 (function() {
   var app;
 
-  app = angular.module('myApp', []);
+  app = angular.module('myApp', [$ngRoute]);
 
 }).call(this);
