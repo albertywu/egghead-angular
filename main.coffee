@@ -5,7 +5,7 @@ app.directive 'zippy', ->
   transclude: true
   scope:
     title: '@'
-  template: '<h1 ng-click="toggleShowContent()">{{ title }}</h1><div ng-transclude ng-show="shouldShowContent"></div>'
+  templateUrl: 'templates/zippy.html'
   link: (scope, element, attrs) ->
     scope.shouldShowContent = true
 
