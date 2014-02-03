@@ -4,4 +4,35 @@
 
   app = angular.module('myApp', []);
 
+  app.controller('PromiseCtrl', function($scope, $q) {
+    var distributeArms, doneArming, think;
+    think = function(time) {
+      var deferred;
+      deferred = $q.defer();
+      setTimeout(function() {
+        alert("I've thought it through");
+        return deferred.resolve();
+      }, 2000);
+      return deferred.promise;
+    };
+    distributeArms = $q.defer();
+    doneArming = distributeArms.promise.then(function(weapon) {
+      alert("you can have my " + weapon);
+      return 'axe';
+    }).then(function(weapon) {
+      alert("and my " + weapon);
+      return 'bow';
+    }).then(function(weapon) {
+      return alert("and my " + weapon);
+    });
+    doneArming.then(function() {
+      return think().then(function() {
+        return alert("... CHARGE!!!");
+      });
+    });
+    return setTimeout(function() {
+      return distributeArms.resolve('sword');
+    }, 2000);
+  });
+
 }).call(this);
