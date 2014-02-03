@@ -5,18 +5,15 @@
   app = angular.module('myApp', ['ngRoute']);
 
   app.config(function($routeProvider) {
-    return $routeProvider.when('/page2', {
-      templateUrl: 'app-2.html',
-      controller: 'AppCtrl'
-    }).otherwise({
+    return $routeProvider.when('/map/:country/:state/:city', {
       templateUrl: 'app.html',
       controller: 'AppCtrl'
     });
   });
 
-  app.controller('AppCtrl', function($scope) {
+  app.controller('AppCtrl', function($scope, $routeParams) {
     return $scope.model = {
-      message: 'This is my app!'
+      message: "You found " + $routeParams.country + " > " + $routeParams.state + " > " + $routeParams.city
     };
   });
 
