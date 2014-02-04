@@ -3,10 +3,9 @@ app = angular.module('myApp', ['ngRoute'])
 app.config ($routeProvider) ->
   $routeProvider.when('/',
     templateUrl: 'homepage.html'
-    controller: 'AppCtrl'
+    controller: 'ViewCtrl'
     resolve:
-      loadData: appCtrl.loadData,
-      prepData: appCtrl.prepData
+      loadData: viewCtrl.loadData
 
   ).when('/map/:country/:state/:city',
 
@@ -23,23 +22,20 @@ app.config ($routeProvider) ->
     redirectTo: '/'
   )
 
-appCtrl = app.controller 'AppCtrl', ($scope, $routeParams, $route) ->
+app.controller 'AppCtrl', ($rootScope) ->
+  $rootScope.$on '$routeChangeError', (event, current, previous, rejection) ->
+    console.log rejection
+
+  $rootScope.$on '$routeChangeSuccess', (event, current, previous) ->
+    console.log event
+
+viewCtrl = app.controller 'ViewCtrl', ($scope, $routeParams, $route) ->
   $scope.model =
     message: "You found #{ $routeParams.country } > #{ $routeParams.state } > #{ $routeParams.city }"
 
-appCtrl.loadData = ($q, $timeout) ->
+viewCtrl.loadData = ($q, $timeout) ->
   deferred = $q.defer()
   $timeout ->
-    console.log 'loading data'
-    deferred.resolve()
+    deferred.reject('your internet is down')
   , 1000
   deferred.promise
-
-appCtrl.prepData = ($q, $timeout) ->
-  deferred = $q.defer()
-  $timeout ->
-    console.log 'prepping data'
-    deferred.resolve()
-  , 1000
-  deferred.promise
-
