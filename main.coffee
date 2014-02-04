@@ -24,7 +24,6 @@ app.config ($routeProvider) ->
   )
 
 appCtrl = app.controller 'AppCtrl', ($scope, $routeParams, $route) ->
-  debugger
   $scope.model =
     message: "You found #{ $routeParams.country } > #{ $routeParams.state } > #{ $routeParams.city }"
 

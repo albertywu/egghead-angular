@@ -29,7 +29,6 @@
   });
 
   appCtrl = app.controller('AppCtrl', function($scope, $routeParams, $route) {
-    debugger;
     return $scope.model = {
       message: "You found " + $routeParams.country + " > " + $routeParams.state + " > " + $routeParams.city
     };
