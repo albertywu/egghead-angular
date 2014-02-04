@@ -6,7 +6,17 @@
 
   app.config(function($routeProvider) {
     return $routeProvider.when('/', {
-      templateUrl: 'homepage.html'
+      templateUrl: 'homepage.html',
+      resolve: {
+        app: function($q, $timeout) {
+          var deferred;
+          deferred = $q.defer();
+          $timeout(function() {
+            return deferred.resolve();
+          }, 2000);
+          return deferred.promise;
+        }
+      }
     }).when('/map/:country/:state/:city', {
       templateUrl: 'app.html',
       controller: 'AppCtrl',

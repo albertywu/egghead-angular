@@ -3,6 +3,15 @@ app = angular.module('myApp', ['ngRoute'])
 app.config ($routeProvider) ->
   $routeProvider.when('/',
     templateUrl: 'homepage.html'
+
+    resolve:
+      app: ($q, $timeout) ->
+        deferred = $q.defer()
+        $timeout ->
+          deferred.resolve()
+        , 2000
+        deferred.promise
+
   ).when('/map/:country/:state/:city',
 
     templateUrl: 'app.html'
