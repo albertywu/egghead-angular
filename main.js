@@ -4,4 +4,14 @@
 
   app = angular.module('myApp', []);
 
+  app.controller('RoomCtrl', function() {
+    this.openDoor = function() {
+      return alert(this.doorSound);
+    };
+    this.doorSound = 'creeeeaaaak';
+    this.doorName = 'My Door';
+    debugger;
+    return this;
+  });
+
 }).call(this);

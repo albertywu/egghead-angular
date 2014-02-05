@@ -10,7 +10,12 @@
 </head>
 <body ng-app="myApp">
 
-  {{ 1 + 1 }}
+  <div ng-controller="RoomCtrl as room">
+    <input class="text" type="text" ng-model="room.doorName" />
+    <input class="text" type="text" ng-model="room.doorSound" />
+    <div class="button" ng-click="room.openDoor()">{{ room.doorName }}</div>
+
+  </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="main.js"></script>
