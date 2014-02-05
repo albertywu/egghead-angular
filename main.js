@@ -4,4 +4,27 @@
 
   app = angular.module('myApp', []);
 
+  app.provider('game', function() {
+    var type;
+    type = 'star';
+    return {
+      setType: function(value) {
+        return type = value;
+      },
+      $get: function() {
+        return {
+          title: type + 'craft'
+        };
+      }
+    };
+  });
+
+  app.config(function(gameProvider) {
+    return gameProvider.setType('star');
+  });
+
+  app.controller('AppCtrl', function($scope, game) {
+    return $scope.title = game.title;
+  });
+
 }).call(this);
