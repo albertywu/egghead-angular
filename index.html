@@ -10,7 +10,28 @@
 </head>
 <body ng-app="myApp">
 
-  {{ 1 + 1 }}
+  <clock timezone="PST"></clock>
+
+  <panel title="My panel title!">
+    <clock timezone="PST"></clock>
+    <clock timezone="PST"></clock>
+    <clock timezone="MST"></clock>
+    <clock timezone="EST"></clock>
+  </panel>
+
+  <panel title="Another Container!">
+    <clock timezone="PST"></clock>
+    <clock timezone="PST"></clock>
+    <clock timezone="MST"></clock>
+    <clock timezone="EST"></clock>
+  </panel>
+
+  <panel title="And finally...">
+    <clock timezone="ANT"></clock>
+    <clock timezone="PST"></clock>
+    <clock timezone="MST"></clock>
+    <clock timezone="EST"></clock>
+  </panel>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="main.js"></script>
