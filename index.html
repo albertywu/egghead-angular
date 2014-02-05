@@ -10,7 +10,11 @@
 </head>
 <body ng-app="myApp">
 
-  {{ 1 + 1 }}
+  <div ng-controller="MyCtrl" ng-repeat="char in 'something'.split('')">
+    <div class="button" ng-click="doSomething($event)">
+      {{ $index + 1 }}. {{ char }}
+    </div>
+  </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="main.js"></script>

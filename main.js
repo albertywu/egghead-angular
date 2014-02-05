@@ -4,4 +4,14 @@
 
   app = angular.module('myApp', []);
 
+  app.config(function($logProvider) {
+    return $logProvider.debugEnabled(false);
+  });
+
+  app.controller('MyCtrl', function($scope, $log) {
+    return $scope.doSomething = function(event) {
+      return $log.log(event);
+    };
+  });
+
 }).call(this);
