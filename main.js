@@ -4,4 +4,48 @@
 
   app = angular.module('myApp', []);
 
+  app.directive('country', function() {
+    return {
+      restrict: 'E',
+      controller: function() {
+        this.makeAnnouncement = function() {
+          return console.log('This country is awesome!');
+        };
+        this.electOfficial = function(official) {
+          return console.log("New official: " + official);
+        };
+        return this;
+      }
+    };
+  });
+
+  app.directive('state', function() {
+    return {
+      restrict: 'E',
+      require: '^country',
+      controller: function() {
+        this.makeLaw = function(law) {
+          return console.log("Law: " + law);
+        };
+        return this;
+      },
+      link: function(scope, elem, attrs, countryCtrl) {
+        countryCtrl.makeAnnouncement();
+        return countryCtrl.electOfficial('Albert Wu');
+      }
+    };
+  });
+
+  app.directive('city', function() {
+    return {
+      restrict: 'E',
+      require: ['^country', '^state'],
+      link: function(scope, elem, attrs, ctrls) {
+        ctrls[0].makeAnnouncement();
+        ctrls[0].electOfficial('Veronika Wu');
+        return ctrls[1].makeLaw('Go to bed sooner!');
+      }
+    };
+  });
+
 }).call(this);
